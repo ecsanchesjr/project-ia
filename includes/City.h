@@ -23,4 +23,4 @@ private:
     double y;
 };
 
-#endif CITY_H
+#endif
