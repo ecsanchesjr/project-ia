@@ -8,6 +8,6 @@ Population::Population(Map& map, const int popSize){
 
 vector<Tour>& Population::getPop(){ return(pop); }
 
-Tour elitism(){
+Tour Population::elitism(){
     
 }

@@ -2,10 +2,15 @@
 #define UTILS_H
 
 #include <limits>
+#include <vector>
 
+
+#include "Tour.h"
+class Tour;
 #include "Population.h"
 
 using std::numeric_limits;
+using std::vector;
 
 const int RES{10000};
 

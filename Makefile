@@ -3,7 +3,7 @@ CC := g++ -std=gnu++14
 SRC_PATH := sources
 INC_PATH := includes
 
-INC := -I $(INC_PATH)
+INC := -I includes
 
 OUT_PATH := bin
 TARGET := $(OUT_PATH)/exe
@@ -15,7 +15,7 @@ all: build run
 
 build:
 	@mkdir -p $(OUT_PATH)
-	$(CC) $(INC) $(SOURCES) -o $(TARGET)
+	$(CC) $(SOURCES) $(INC) -o $(TARGET)
 
 run:
 	@echo "\nRunning..."
@@ -23,4 +23,4 @@ run:
 
 dist:
 	@echo "\nBuilding optimized Code Overpower!!!!!"
-	$(CC) $(INC) $(SOURCES) -o $(TARGET) -03
+	$(CC) $(SOURCES) $(INC) -o $(TARGET) -03

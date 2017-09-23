@@ -21,6 +21,8 @@ double Tour::getFitness(){
     return((1/sum)*RES);
 }
 
+double Tour::getDistance(){ return(dist); }
+
 int Tour::findCity(City& c){
     for(int i=0; i<=route.size(); i++){
         if(c == route[i]) return(i);

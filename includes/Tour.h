@@ -16,6 +16,7 @@ public:
     Tour(Map&, const int);
     vector<City>& getRoute();
     double getFitness();
+    double getDistance();
     void swapCities(const int, const int);
     int findCity(City&);
 
