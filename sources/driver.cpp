@@ -1,3 +1,17 @@
+#include <iostream>
+#include "Population.hpp"
+#include "ImportData.hpp"
+#include "Map.hpp"
+
+using namespace std;
+
 int main(){
-    return 0;
+    int popSize{1};
+
+    ImportData myFile("libs/berlin52.tsp");
+    Map map(myFile.getCitiesCoord());
+
+    Population *pop = new Population(map, popSize, 1);
+
+    cout << (*pop) << endl;
 }

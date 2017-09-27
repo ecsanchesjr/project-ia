@@ -1,4 +1,4 @@
-#include "Map.h"
+#include "Map.hpp"
 
 Map::Map(vector<City> data):cityList(data){}
 

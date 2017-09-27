@@ -3,16 +3,21 @@
 
 #include <vector>
 
-#include "Tour.h"
-#include "Map.h"
+#include "Tour.hpp"
+#include "Map.hpp"
 
 using std::vector;
+using std::ostream;
+using std::setfill;
+using std::setw;
 
 class Population{
+    
+    friend ostream& operator<<(ostream&,Population &);
 
 public:
     Population();
-    Population(Map&, const int);
+    Population(Map&, const int, const int);
 
     vector<Tour>& getPop();
 

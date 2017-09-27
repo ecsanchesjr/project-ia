@@ -1,7 +1,17 @@
 #ifndef CITY_H
 #define CYTY_H
 
+#include <iostream>
+#include <iomanip>
+
+using std:: ostream;
+using std:: endl;
+using std:: setfill;
+using std:: setw;
+
 class City{
+
+    friend ostream& operator<<(ostream&, const City&);
 
 public:
     City();

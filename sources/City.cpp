@@ -1,4 +1,4 @@
-#include<City.h>
+#include "City.hpp"
 
 City::City(){
     this->id=0;
@@ -28,4 +28,9 @@ const City& City::operator=(const City& c){
     this->id = c.getId();
     this->x = c.getX();
     this->y = c.getY();
+}
+
+ostream& operator<<(ostream &output, const City &c){
+    output << setfill(' ') << "ID: " << setw(2) << c.getId() << "    " << "X: "<<setw(6)<<c.getX()<< "    " << "Y: "<<setw(6)<< c.getY() << endl;
+    return (output);
 }

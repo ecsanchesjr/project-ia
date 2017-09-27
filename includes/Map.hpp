@@ -2,8 +2,7 @@
 #define MAP_H
 
 #include <vector>
-
-#include "City.h"
+#include "City.hpp"
 
 using std::vector;
 
