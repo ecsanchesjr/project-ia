@@ -11,7 +11,16 @@ Population::Population(Map& map, const int popSize, const int generateMode){
 vector<Tour>& Population::getPop(){ return(pop); }
 
 Tour Population::elitism(){
-    
+    double maxFit{maxFitness(pop)};
+    int i=0;
+    for(Tour t : (pop)){
+        if(compareDouble(t.getFitness(), maxFit)){
+            Tour tmp = t;
+            pop.erase(pop.begin() + i);
+            return(tmp);
+        }
+        i++;
+    }
 }
 
 ostream& operator<<(ostream &output,Population &pop){  // Overload de operador para impressão da população

@@ -31,6 +31,6 @@ const City& City::operator=(const City& c){
 }
 
 ostream& operator<<(ostream &output, const City &c){
-    output << setfill(' ') << "ID: " << setw(2) << c.getId() << "    " << "X: "<<setw(6)<<c.getX()<< "    " << "Y: "<<setw(6)<< c.getY() << endl;
+    output << setfill(' ') << "ID: " << setw(2) << c.getId() << "    " << "X: "<<setw(6)<<c.getX()<< "    " << "Y: "<<setw(6)<< c.getY();
     return (output);
 }

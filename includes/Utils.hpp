@@ -9,9 +9,13 @@
 using std::numeric_limits;
 using std::vector;
 
-//const int RES{10000};
+const int RES = 10000;
 
 static vector<City> firstPoint;
+
+bool compareDouble(const double,const double);
+
+//double convertRanges(const int,const double);
 
 double maxFitness(vector<Tour>&);
 

@@ -1,7 +1,12 @@
 #include "Utils.hpp"
 
+bool compareDouble(const double a, const double b){
+    return(fabs(a-b)<numeric_limits<double>::epsilon());
+}
+
+
 double maxFitness(vector<Tour>& tours){
-    double max = -1*numeric_limits<double>::max(), fitness{0.0};
+    double max = numeric_limits<double>::min(), fitness{0.0};
     for(Tour t : tours){
         fitness = t.getFitness();
         if(max < fitness){ 

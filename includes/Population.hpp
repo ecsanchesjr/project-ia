@@ -11,18 +11,21 @@ using std::ostream;
 using std::setfill;
 using std::setw;
 
-class Population{
-    
-    friend ostream& operator<<(ostream&,Population &);
+class Population
+{
 
-public:
+    friend ostream &operator<<(ostream &, Population &);
+
+  public:
     Population();
-    Population(Map&, const int, const int);
+    Population(Map &, const int, const int);
 
-    vector<Tour>& getPop();
+    vector<Tour> &getPop();
 
-private:
+  private:
     vector<Tour> pop;
+
+    // Erase and Return the best Tour
     Tour elitism();
 };
 
