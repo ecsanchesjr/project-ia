@@ -14,6 +14,7 @@ int main(){
 
     Population *pop = new Population(map, popSize, 1);
 
+
     cout << (*pop) << endl;
 
 }

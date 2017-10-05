@@ -14,22 +14,25 @@ using std::setw;
 class Population
 {
 
-    friend ostream &operator<<(ostream &, Population &);
+  friend ostream &operator<<(ostream &, Population &);
 
-  public:
-    Population();
-    Population(Map &, const int, const int);
+public:
+  Population();
+  Population(Map &, const int, const int);
 
-    vector<Tour> &getPop();
+  vector<Tour> &getPop();
 
-  private:
-    vector<Tour> pop;
+private:
+  vector<Tour> pop;
 
-    // Erase and Return the best Tour, use with a auxiliary Pop
-    Tour elitism();
+  // Erase and Return the best Tour, use with a auxiliary Pop
+  Tour elitism();
 
-    // Runs the one-point crossover in two Tours of Population
-    void crossoverOX(const int, const int);
+  // Runs the one-point crossover in two Tours of Population
+  void crossoverOX(const int, const int);
+
+  // Runs the Partial-Mapped Crossover in two Tours of Population
+  void crossoverPMX(const int, const int);
 };
 
 #endif
