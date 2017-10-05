@@ -15,8 +15,6 @@ static vector<City> firstPoint;
 
 bool compareDouble(const double,const double);
 
-//double convertRanges(const int,const double);
-
 double maxFitness(vector<Tour>&);
 
 double distance(City&, City&);

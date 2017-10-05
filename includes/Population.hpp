@@ -25,8 +25,11 @@ class Population
   private:
     vector<Tour> pop;
 
-    // Erase and Return the best Tour
+    // Erase and Return the best Tour, use with a auxiliary Pop
     Tour elitism();
+
+    // Runs the one-point crossover in two Tours of Population
+    void crossoverOX(const int, const int);
 };
 
 #endif

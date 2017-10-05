@@ -7,7 +7,7 @@
 using namespace std;
 
 int main(){
-    int popSize{3};
+    int popSize{2};
 
     ImportData myFile("libs/berlin52_Edited.tsp");
     Map map(myFile.getCitiesCoord());

@@ -75,8 +75,10 @@ void Tour::firstRandomGeneration(Map &map){
 }
 
 ostream& operator<<(ostream &output,Tour &t){  // Overload de operador para impressão da população
+    int i=0;
     for(City c : t.getRoute()){
-        output<< setfill(' ') <<c<<endl;
+        //output << setfill(' ') << c << endl;
+        output<< i << " " << setfill(' ') <<c<<endl; i++; // Debug
     }
     output<<"Fitness: "<<t.getFitness()<<endl;
     output<<"Distance: "<<t.dist<<endl;
