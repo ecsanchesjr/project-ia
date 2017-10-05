@@ -12,6 +12,6 @@ int main(){
     ImportData myFile("libs/berlin52_Edited.tsp");
     Map map(myFile.getCitiesCoord());
 
-    Population *pop = new Population(map, popSize, 1);
-    cout << (*pop) << endl;
+    Population *pop = new Population(map, popSize, 1, 1, 20, 1);
+    //cout << (*pop) << endl;
 }

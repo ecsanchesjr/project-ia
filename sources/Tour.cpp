@@ -4,10 +4,13 @@ Tour::Tour(){}
 
 Tour::Tour(Map& map, const int generateMode){
     Map tmp(map.getCityList());
+    
     if(generateMode==0){
         randomGeneration(tmp.getCityList());
-    }else{
+    }else if(generateMode==1){
         firstRandomGeneration(tmp);
+    }else{ // Never catch in this else
+        cout << "GenerateMode value ERROR!!!" << endl;
     }
 }
 

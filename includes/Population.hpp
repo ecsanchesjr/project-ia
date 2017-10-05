@@ -18,12 +18,26 @@ class Population
 
 public:
   Population();
-  Population(Map &, const int, const int);
+  /* 
+    \param1 Map of all cities in problem
+    \param2 Size of Population
+    \param3 Initial Population generation Method, default = 0 (random)
+    \param4 Crossover method, default = 0 (OX)
+    \param5 Eletism percentage, default = 20 (20%)
+    \param6 Mutation percentage, default = 5 (5%)
+  */
+  Population(Map &, const int popSize, const int generationMethod = 0, const int crossMethod = 0, const int elitism = 20, const int mutPerc = 5);
 
   vector<Tour> &getPop();
 
 private:
   vector<Tour> pop;
+
+  // Walks the population executing crossover in Tours.
+  void crossover();
+
+  // Walks the population executing mutation in Tours.
+  void mutate(); 
 
   // Will chose a Tour, in pop, randomly for crossover execution
   Tour roulete();

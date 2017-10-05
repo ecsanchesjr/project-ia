@@ -2,15 +2,40 @@
 
 Population::Population() {}
 
-Population::Population(Map &map, const int popSize, const int generateMode)
+Population::Population(Map &map, const int popSize, const int generationMethod, const int crossMethod, const int elitism, const int mutPerc)
 {
+    CROSS_METHOD = crossMethod;
+    MUT_PERCENTAGE = mutPerc;
+    ELITISM_TOTAL = (float)elitism/100*popSize;
     for (int i = 0; i < popSize; i++)
     {
-        pop.push_back(Tour(map, generateMode));
+        pop.push_back(Tour(map, generationMethod));
     }
 }
 
 vector<Tour> &Population::getPop() { return (pop); }
+
+void Population::crossover(){
+    int size{(int)pop.size()};
+
+    if(CROSS_METHOD == 0){
+        for(int i=0; i<size; i++){
+            crossoverOX(rand()%size, rand()%size);
+        }
+    }else if(CROSS_METHOD == 1){
+        for(int i=0; i<size; i++){
+            crossoverPMX(rand()%size, rand()%size);
+        }
+    }else{ // Never catch in this Else
+        cout << "CROSS_METHOD VALUE ERROR!!!!" << endl;
+    }
+}
+
+void Population::mutate(){
+    for(int i=0; i<pop.size(); i++){
+        mutation(i);
+    }
+}
 
 Tour Population::roulete(){
     double sumFitness{0.0}, ctrl{0.0};

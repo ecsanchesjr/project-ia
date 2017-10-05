@@ -9,9 +9,14 @@
 using std::numeric_limits;
 using std::vector;
 
-const int RES = 10000;
+const int RES = 10000; // Number to improve the visualization of fitness values.
 
+// Percentages values.
 static int MUT_PERCENTAGE;
+static int ELITISM_TOTAL;
+
+// Support values.
+static int CROSS_METHOD;
 
 static vector<City> firstPoint;
 
