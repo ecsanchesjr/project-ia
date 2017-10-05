@@ -11,6 +11,8 @@ using std::vector;
 
 const int RES = 10000;
 
+static int MUT_PERCENTAGE;
+
 static vector<City> firstPoint;
 
 bool compareDouble(const double,const double);
@@ -24,5 +26,7 @@ bool contains(vector<City>&, City&);
 City eraseAndReturn(vector<City>&, const int);
 
 int findLowerDistance(vector<City>, City);
+
+double convertRanges(const int, const double);
 
 #endif

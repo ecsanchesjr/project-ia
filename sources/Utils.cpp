@@ -49,3 +49,7 @@ int findLowerDistance(vector<City> map, City atual){
     }
     return(index);
 }
+
+double convertRanges(const int n,const double rand){ 
+    return((rand*n)/RES);
+}

@@ -25,8 +25,14 @@ public:
 private:
   vector<Tour> pop;
 
+  // Will chose a Tour, in pop, randomly for crossover execution
+  Tour roulete();
+
   // Erase and Return the best Tour, use with a auxiliary Pop
   Tour elitism();
+
+  // Will execute mutation in Tour passed.
+  void mutation(const int);
 
   // Runs the one-point crossover in two Tours of Population
   void crossoverOX(const int, const int);

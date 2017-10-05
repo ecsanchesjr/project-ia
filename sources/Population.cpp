@@ -12,6 +12,27 @@ Population::Population(Map &map, const int popSize, const int generateMode)
 
 vector<Tour> &Population::getPop() { return (pop); }
 
+Tour Population::roulete(){
+    double sumFitness{0.0}, ctrl{0.0};
+    int random{0};
+
+    for(Tour t : pop){ // Sum all fitness in all tours
+        sumFitness += t.getFitness();
+    }
+
+    // Generate a random number, this number will chose a tour
+    random = rand()%RES;
+    ctrl = convertRanges(random, sumFitness);
+    
+    for(Tour t : pop){
+        ctrl -= t.getFitness();
+        if(ctrl <= 0){
+            return(t);
+        }
+    }
+    return(pop[pop.size() - 1]);
+}
+
 Tour Population::elitism()
 {
     double maxFit{maxFitness(pop)};
@@ -25,6 +46,16 @@ Tour Population::elitism()
             return (tmp);
         }
         i++;
+    }
+}
+
+void Population::mutation(const int t){
+    int size{(int)pop[t].getRoute().size()};
+
+    for(int i=0; i<size; i++){
+        if(rand()%100+1 < MUT_PERCENTAGE){  // Mutation ocurrs or not
+            pop[t].swapCities(rand()%size, rand()%size); // Altern two cities in Tour
+        }
     }
 }
 
