@@ -21,12 +21,9 @@ public:
   /* 
     \param1 Map of all cities in problem
     \param2 Size of Population
-    \param3 Initial Population generation Method, default = 0 (random)
-    \param4 Crossover method, default = 0 (OX)
-    \param5 Eletism percentage, default = 20 (20%)
-    \param6 Mutation percentage, default = 5 (5%)
+    \param3 Initial Population generation Method
   */
-  Population(Map &, const int popSize, const int generationMethod = 0, const int crossMethod = 0, const int elitism = 20, const int mutPerc = 5);
+  Population(Map &, const int, const int);
 
   //Execute the transition beetween atual generation to next generation
   Population* newGeneration();

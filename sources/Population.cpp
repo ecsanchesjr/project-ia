@@ -2,11 +2,8 @@
 
 Population::Population() {}
 
-Population::Population(Map &map, const int popSize, const int generationMethod, const int crossMethod, const int elitism, const int mutPerc)
+Population::Population(Map &map, const int popSize, const int generationMethod)
 {
-    CROSS_METHOD = crossMethod;
-    MUT_PERCENTAGE = mutPerc;
-    ELITISM_TOTAL = (float)elitism / 100 * popSize;
     for (int i = 0; i < popSize; i++)
     {
         pop.push_back(Tour(map, generationMethod));
@@ -24,7 +21,7 @@ Population *Population::newGeneration()
         elitismTours.push_back(aux->elitism());
     }
     delete aux;
-    
+
     for (int i = 0; i < pop.size() - ELITISM_TOTAL; i++)
     {
         (*newGen).getPop().push_back(roulete());

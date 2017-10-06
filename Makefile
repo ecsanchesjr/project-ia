@@ -11,6 +11,8 @@ TARGET_DIST := $(OUT_PATH)/dist
 
 SOURCES := $(shell find $(SRC_PATH) -type f -name *.cpp)
 
+ARGS := berlin52.tsp berlin52.log 10 1 1 20 5
+
 all: build run
 
 build:
@@ -19,7 +21,7 @@ build:
 
 run:
 	@echo "\nRunning..."
-	@./$(TARGET)
+	@./$(TARGET) $(ARGS)
 
 dist:
 	@echo "\nBuilding optimized Code Overpower!!!!!"
