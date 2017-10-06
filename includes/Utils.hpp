@@ -9,16 +9,20 @@
 using std::numeric_limits;
 using std::vector;
 
-const int RES = 10000; // Number to improve the visualization of fitness values.
-
-// Percentages values.
+/*-------------------------
+    Support values.
+--------------------------*/
+static int CROSS_METHOD;
 static int MUT_PERCENTAGE;
 static int ELITISM_TOTAL;
 
-// Support values.
-static int CROSS_METHOD;
+const int RES = 10000; // Number to improve the visualization of fitness values.
+static vector<City> firstPoint; // Save the cities to random-first generation
+static vector<Tour> elitismTours; // Save the best Tours to Elitism
 
-static vector<City> firstPoint;
+/*----------------------
+    Utilities Functions
+------------------------*/
 
 bool compareDouble(const double,const double);
 
@@ -27,6 +31,8 @@ double maxFitness(vector<Tour>&);
 double distance(City&, City&);
 
 bool contains(vector<City>&, City&);
+
+bool containsTour(vector<Tour>&, Tour&);
 
 City eraseAndReturn(vector<City>&, const int);
 

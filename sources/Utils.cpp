@@ -29,6 +29,11 @@ bool contains(vector<City> &vec,City &c){  // Irá verificar se a cidade já exi
     return(false);
 }
 
+bool containsTour(vector<Tour>& tours, Tour& t){
+    for(Tour ObjT : tours){
+    }
+}
+
 City eraseAndReturn(vector<City>& map, const int index){
     City tmp = map[index];
     map.erase(map.begin() + index);

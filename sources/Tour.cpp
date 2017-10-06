@@ -77,6 +77,15 @@ void Tour::firstRandomGeneration(Map &map){
     }  
 }
 
+bool Tour::operator==(Tour& t){
+    for(int i=0; i<t.getRoute().size(); i++){
+        if(!(t.getRoute()[i] == this->getRoute()[i])){
+            return(false);
+        }
+    }
+    return(true);
+}
+
 ostream& operator<<(ostream &output,Tour &t){  // Overload de operador para impressão da população
     int i=0;
     for(City c : t.getRoute()){

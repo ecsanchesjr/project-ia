@@ -28,6 +28,9 @@ public:
   */
   Population(Map &, const int popSize, const int generationMethod = 0, const int crossMethod = 0, const int elitism = 20, const int mutPerc = 5);
 
+  //Execute the transition beetween atual generation to next generation
+  Population* newGeneration();
+
   vector<Tour> &getPop();
 
 private:

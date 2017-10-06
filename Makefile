@@ -23,4 +23,4 @@ run:
 
 dist:
 	@echo "\nBuilding optimized Code Overpower!!!!!"
-	$(CC) $(SOURCES) $(INC) -o $(TARGET) -03
+	$(CC) $(SOURCES) $(INC) -o $(TARGET) -O3

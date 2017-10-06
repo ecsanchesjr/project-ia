@@ -37,6 +37,9 @@ private:
     double distance(const int, const int);
     void randomGeneration(vector<City>&);
     void firstRandomGeneration(Map&);
+
+    // Overload to Operator ==
+    bool operator==(Tour&);
 };
 
 #endif
