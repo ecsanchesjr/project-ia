@@ -14,7 +14,7 @@ using std::vector;
 --------------------------*/
 static int CROSS_METHOD;
 static int MUT_PERCENTAGE;
-static int ELITISM_TOTAL;
+extern int ELITISM_TOTAL;
 
 const int RES = 10000; // Number to improve the visualization of fitness values.
 static vector<City> firstPoint; // Save the cities to random-first generation

@@ -5,11 +5,14 @@
 
 #include "Tour.hpp"
 #include "Map.hpp"
+#include "Utils.hpp"
 
 using std::vector;
 using std::ostream;
 using std::setfill;
 using std::setw;
+
+extern int ELITISM_TOTAL;
 
 class Population
 {

@@ -8,7 +8,6 @@ using std:: ostream;
 using std:: endl;
 using std:: setfill;
 using std:: setw;
-
 class City{
 
     friend ostream& operator<<(ostream&, const City&);

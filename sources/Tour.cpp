@@ -45,7 +45,7 @@ void Tour::swapCities(const int a, const int b){
 }
 
 double Tour::distance(const int a, const int b){
-    return(sqrt(pow(route[a].getX() - route[b].getY(), 2) + pow(route[a].getY() - route[b].getY(), 2)));
+    return(sqrt(pow(((route)[a].getX())-((route)[b].getX()),2)+pow(((route)[a].getY())-((route)[b].getY()),2)));
 }
 
 void Tour::randomGeneration(vector<City> &map){
@@ -87,10 +87,10 @@ bool Tour::operator==(Tour& t){
 }
 
 ostream& operator<<(ostream &output,Tour &t){  // Overload de operador para impressão da população
-    int i=0;
+    //int i=0;
     for(City c : t.getRoute()){
-        //output << setfill(' ') << c << endl;
-        output<< i << " " << setfill(' ') <<c<<endl; i++; // Debug
+        output << setfill(' ') << c << endl;
+        //output<< i << " " << setfill(' ') <<c<<endl; i++; // Debug
     }
     output<<"Fitness: "<<t.getFitness()<<endl;
     output<<"Distance: "<<t.dist<<endl;

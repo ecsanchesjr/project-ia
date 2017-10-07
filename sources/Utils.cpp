@@ -1,5 +1,7 @@
 #include "Utils.hpp"
 
+int ELITISM_TOTAL=0;
+
 bool compareDouble(const double a, const double b){
     return(fabs(a-b)<numeric_limits<double>::epsilon());
 }

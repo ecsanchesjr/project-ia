@@ -30,6 +30,8 @@ using std::stoi;
 
 const int LIM_UNCHANGED{50000};
 
+extern int ELITISM_TOTAL;
+
 unsigned int popSize{0};
 string inputFileName{""};
 string outputFileName{""};
@@ -55,7 +57,6 @@ int main(int argc, char *argv[]){
     }catch(std::invalid_argument &e){
         std::cerr << "Error in param!" << endl;
     }
-
     initAlg();
     return(0);
 }
@@ -75,7 +76,9 @@ void initAlg(){
     while(!endAlg(*pop)){ // While stop condition not executed
         
         Population *oldPop = pop;
+
         pop = (*pop).newGeneration();
+
         delete oldPop;
         gen++;
         if(gen%1000==0){
@@ -86,6 +89,7 @@ void initAlg(){
             outputStream.writeFile(input); 
         }
     }
+    cout << (*pop) << endl;
 
     cout << "Stop condition executed!!" << endl;
 }
