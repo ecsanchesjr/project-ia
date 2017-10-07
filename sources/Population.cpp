@@ -14,29 +14,26 @@ Population *Population::newGeneration()
 {
     Population *newGen = new Population;
 
-    Population *aux = new Population;
-    aux->getPop() = pop;
-    for (int i = 0; i < ELITISM_TOTAL; i++)
+/*     for (int i = 0; i < ELITISM_TOTAL; i++)
     { // Get the N best Tours of Population, the population continues with tours to selection method
-        elitismTours.push_back(aux->elitism());
-    }
-    delete aux;
+        elitismTours.push_back(aux.elitism());
+    } */
+    //delete aux; 
+    elitism();
 
     for (int i = 0; i < pop.size() - ELITISM_TOTAL; i++)
     {
         (*newGen).getPop().push_back(roulete());
     }
+
     newGen->crossover();
     newGen->mutate();
 
-    /*   for (int i = 0; i < ELITISM_TOTAL; i++)
-    { // erro na pop, dar um run pra klembrar, mas parece uqe o elitism não tá sendo inserido
-        (*newGen).getPop().push_back(elitismTours[i]);
-    } */
     for (Tour t : elitismTours)
     {
         (*newGen).getPop().push_back(t);
     }
+
     elitismTours.clear();
     return (newGen);
 }
@@ -61,7 +58,7 @@ void Population::crossover()
     {
         for (int i = 0; i < size; i++)
         {
-            crossoverPMX(rand() % size, rand() % size);
+            crossoverPMX(rand()%size, rand()%size);
         }
     }
     else
@@ -103,15 +100,12 @@ Tour Population::roulete()
     return (pop[pop.size() - 1]);
 }
 
-Tour Population::elitism()
+/* Tour Population::elitism()
 {
     double maxFit{maxFitness(this->pop)};
     int i = 0;
-    //cout << "max "<< maxFit << endl;
     for (Tour t : (this->pop))
-    {
-        /* cout << t.getFitness() <<endl;
-        cout << compareDouble(t.getFitness(), maxFit) << endl; */
+    {   
         if (compareDouble(t.getFitness(), maxFit))
         {
             Tour tmp = t;
@@ -119,6 +113,26 @@ Tour Population::elitism()
             return (tmp);
         }
         i++;
+    }
+    return(this->pop[0]);
+}  */
+
+/* Tour Population::elitism(){  // Mantem a melhor solução da geração, irá retornar o Tour
+    double maxFit{maxFitness(pop)};
+    for(Tour t : (pop)){
+        if(compareDouble(t.getFitness(),maxFit)){
+            return(t);
+        }
+    }
+} */
+
+void Population::elitism(){
+    Population aux;
+    aux.getPop() = pop;
+
+    std::sort(aux.getPop().begin(), aux.getPop().end(), ALargerB);
+    for(int i=0; i<ELITISM_TOTAL; i++){
+        elitismTours.push_back(aux.getPop()[i]);
     }
 }
 

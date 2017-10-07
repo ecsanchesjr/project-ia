@@ -2,6 +2,7 @@
 #define POPULATION_H
 
 #include <vector>
+#include <algorithm>
 
 #include "Tour.hpp"
 #include "Map.hpp"
@@ -46,7 +47,7 @@ private:
   Tour roulete();
 
   // Erase and Return the best Tour, use with a auxiliary Pop
-  Tour elitism();
+  void elitism();
 
   // Will execute mutation in Tour passed.
   void mutation(const int);

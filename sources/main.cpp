@@ -28,7 +28,7 @@ using std::cout;
 using std::endl;
 using std::stoi;
 
-const int LIM_UNCHANGED{50000};
+const int LIM_UNCHANGED{5000};
 
 extern int ELITISM_TOTAL;
 
@@ -76,9 +76,7 @@ void initAlg(){
     while(!endAlg(*pop)){ // While stop condition not executed
         
         Population *oldPop = pop;
-
         pop = (*pop).newGeneration();
-
         delete oldPop;
         gen++;
         if(gen%1000==0){
@@ -88,9 +86,10 @@ void initAlg(){
             input << gen << " " << maxFitness(pop->getPop());
             outputStream.writeFile(input); 
         }
+    } 
+    for(Tour t : pop->getPop()){
+        cout << t.getFitness() << endl;
     }
-    cout << (*pop) << endl;
-
     cout << "Stop condition executed!!" << endl;
 }
 
@@ -98,7 +97,6 @@ bool endAlg(Population &pop){
     static long int genWithoutChanges{0};
     static double maxFitEver{0.0};
     double maxFitNow{maxFitness(pop.getPop())};
-
     if(maxFitNow > maxFitEver){
         maxFitEver = maxFitNow;
         genWithoutChanges = 0;

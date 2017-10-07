@@ -12,8 +12,8 @@ using std::vector;
 /*-------------------------
     Support values.
 --------------------------*/
-static int CROSS_METHOD;
-static int MUT_PERCENTAGE;
+extern int CROSS_METHOD;
+extern int MUT_PERCENTAGE;
 extern int ELITISM_TOTAL;
 
 const int RES = 10000; // Number to improve the visualization of fitness values.
@@ -32,12 +32,12 @@ double distance(City&, City&);
 
 bool contains(vector<City>&, City&);
 
-bool containsTour(vector<Tour>&, Tour&);
-
 City eraseAndReturn(vector<City>&, const int);
 
 int findLowerDistance(vector<City>, City);
 
 double convertRanges(const int, const double);
+
+bool ALargerB(Tour&, Tour&);
 
 #endif

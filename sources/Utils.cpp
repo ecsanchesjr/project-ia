@@ -1,6 +1,9 @@
 #include "Utils.hpp"
 
 int ELITISM_TOTAL=0;
+int CROSS_METHOD=0;
+int MUT_PERCENTAGE=0;
+
 
 bool compareDouble(const double a, const double b){
     return(fabs(a-b)<numeric_limits<double>::epsilon());
@@ -31,11 +34,6 @@ bool contains(vector<City> &vec,City &c){  // Irá verificar se a cidade já exi
     return(false);
 }
 
-bool containsTour(vector<Tour>& tours, Tour& t){
-    for(Tour ObjT : tours){
-    }
-}
-
 City eraseAndReturn(vector<City>& map, const int index){
     City tmp = map[index];
     map.erase(map.begin() + index);
@@ -59,4 +57,8 @@ int findLowerDistance(vector<City> map, City atual){
 
 double convertRanges(const int n,const double rand){ 
     return((rand*n)/RES);
+}
+
+bool ALargerB(Tour& t1, Tour& t2){
+    return (t1.getFitness() > t2.getFitness());
 }
