@@ -91,7 +91,7 @@ void initAlg(){
     input.str("");
     input.clear();
     fitnessRunning = maxFitness(pop->getPop());
-    input << gen << " , " << fitnessRunning << " , " << ((1/fitnessRunning)*10000);
+    input << gen << "," << fitnessRunning << "," << ((1/fitnessRunning)*10000);
     outputStream.writeFile(input); 
 
      while(!endAlg(*pop)){ // While stop condition not executed
@@ -105,7 +105,7 @@ void initAlg(){
             input.str("");
             input.clear();
             fitnessRunning = maxFitness(pop->getPop());
-            input << gen << " , " << fitnessRunning << " ," << ((1/fitnessRunning)*10000);
+            input << gen << "," << fitnessRunning << "," << ((1/fitnessRunning)*10000);
             outputStream.writeFile(input); 
         }
     }

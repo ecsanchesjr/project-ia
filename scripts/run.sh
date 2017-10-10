@@ -36,7 +36,7 @@ do
                             end_time=`date +%s`
 
                             ((time=$end_time-$start_time-1))
-                            echo "Run $i , $distance , $time" >> "${RUN_DIR}/run.log"
+                            echo "Run $i,$distance,$time" >> "${RUN_DIR}/run.log"
 
                             echo -e "\n======================================================\n"
                         done
