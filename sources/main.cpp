@@ -31,14 +31,15 @@ using std::stoi;
 
 typedef std::chrono::high_resolution_clock Clock;
 
-const int LIM_UNCHANGED{5000};
-const int LIM_ALL{500000};
+const int LIM_UNCHANGED{50000};
+const int LIM_ALL{1000000};
 
 extern int ELITISM_TOTAL;
 
 unsigned int popSize{0};
 string inputFileName{""};
 string outputFileName{""};
+string outputSolution{""};
 unsigned int generationMethod;
 unsigned long int gen{0};
 
@@ -46,7 +47,7 @@ void initAlg();
 bool endAlg(Population&);
 
 int main(int argc, char *argv[]){
-    if(argc != 8){
+    if(argc != 9){
         std::cerr << "Number of params incorrect!" << endl;
         return(0);
     }
@@ -59,6 +60,7 @@ int main(int argc, char *argv[]){
         CROSS_METHOD = stoi(argv[5]);
         ELITISM_TOTAL = (float)stoi(argv[6])/100 * popSize;
         MUT_PERCENTAGE = stoi(argv[7]);
+        outputSolution = argv[8];
     }catch(std::invalid_argument &e){
         std::cerr << "Error in param!" << endl;
     }
@@ -75,13 +77,22 @@ int main(int argc, char *argv[]){
 void initAlg(){
     srand(time(NULL));
 
-    ImportData inputStream("libs/"+inputFileName);
-    ExportData outputStream("logs/"+outputFileName);
+    ImportData inputStream(inputFileName);
+    ExportData outputStream(outputFileName);
+    ExportData outputSolStream(outputSolution);
     std::ostringstream input;
+    std::ostringstream inputSol;
+    double fitnessRunning{0.0};
 
     Map map(inputStream.getCitiesCoord()); // Map generation
 
     Population *pop = new Population(map, popSize, generationMethod);
+
+    input.str("");
+    input.clear();
+    fitnessRunning = maxFitness(pop->getPop());
+    input << gen << ";" << fitnessRunning << ";" << ((1/fitnessRunning)*10000);
+    outputStream.writeFile(input); 
 
      while(!endAlg(*pop)){ // While stop condition not executed
         
@@ -93,11 +104,19 @@ void initAlg(){
             cout << "Generation: " << gen << endl;
             input.str("");
             input.clear();
-            input << gen << " " << maxFitness(pop->getPop());
+            fitnessRunning = maxFitness(pop->getPop());
+            input << gen << ";" << fitnessRunning << ";" << ((1/fitnessRunning)*10000);
             outputStream.writeFile(input); 
         }
     }
 
+    Tour sol = pop->getPop()[bestFitness(pop->getPop())];
+    for(City c : sol.getRoute()){
+        inputSol.str("");
+        inputSol.clear();
+        inputSol << c.getId();
+        outputSolStream.writeFile(inputSol);
+    }
     cout << "Stop condition executed!!" << endl;    
 }
 

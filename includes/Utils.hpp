@@ -42,4 +42,6 @@ bool ALargerB(Tour&, Tour&);
 // Erase and Return the best Tour, use with a auxiliary Pop
 vector<Tour> elitism(vector<Tour>&);
 
+int bestFitness(vector<Tour>&);
+
 #endif

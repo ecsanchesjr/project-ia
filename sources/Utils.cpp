@@ -74,3 +74,16 @@ vector<Tour> elitism(vector<Tour>& tours){
 
     return(elitism);
 }
+
+int bestFitness(vector<Tour> &tours){
+    double max = numeric_limits<double>::min(),fitness{0.0};
+    int aux;
+    for(int i=0; i<tours.size();i++){
+        fitness = tours[i].getFitness();
+        if(max < fitness){
+            aux = i;
+        }
+    }
+    return(aux);
+}
+

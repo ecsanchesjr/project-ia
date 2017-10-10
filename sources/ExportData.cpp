@@ -2,8 +2,8 @@
 
 ExportData::ExportData(string fileName)
 {
-    vector<string> res = explode(fileName,'.');
-    manager.open(res[0]+".log");
+    //vector<string> res = explode(fileName,'.');
+    manager.open(fileName);
 }
 
 void ExportData::writeFile(ostringstream &input)
