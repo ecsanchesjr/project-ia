@@ -19,6 +19,7 @@
 #include <string>
 #include <cstdlib>
 #include <stdexcept>
+#include <chrono>
 #include "Population.hpp"
 #include "ImportData.hpp"
 #include "ExportData.hpp"
@@ -28,7 +29,10 @@ using std::cout;
 using std::endl;
 using std::stoi;
 
-const int LIM_UNCHANGED{50000};
+typedef std::chrono::high_resolution_clock Clock;
+
+const int LIM_UNCHANGED{5000};
+const int LIM_ALL{500000};
 
 extern int ELITISM_TOTAL;
 
@@ -36,6 +40,7 @@ unsigned int popSize{0};
 string inputFileName{""};
 string outputFileName{""};
 unsigned int generationMethod;
+unsigned long int gen{0};
 
 void initAlg();
 bool endAlg(Population&);
@@ -57,12 +62,17 @@ int main(int argc, char *argv[]){
     }catch(std::invalid_argument &e){
         std::cerr << "Error in param!" << endl;
     }
+    auto t0 = Clock::now(); // Init time metrics
     initAlg();
+    auto tF = Clock::now();    
+
+    int exeTime = std::chrono::duration_cast<std::chrono::seconds>(tF - t0).count();
+    cout << "Execution time: " << exeTime << " seconds!" <<  endl;
+
     return(0);
 }
 
 void initAlg(){
-    unsigned long int gen{0};
     srand(time(NULL));
 
     ImportData inputStream("libs/"+inputFileName);
@@ -88,7 +98,7 @@ void initAlg(){
         }
     }
 
-    cout << "Stop condition executed!!" << endl;
+    cout << "Stop condition executed!!" << endl;    
 }
 
 bool endAlg(Population &pop){
@@ -103,8 +113,10 @@ bool endAlg(Population &pop){
     }else{
         genWithoutChanges++;
     }
-
+    
     if(genWithoutChanges >= LIM_UNCHANGED){
+        return(true);
+    }else if (gen == LIM_ALL){
         return(true);
     }else{
         return(false);
