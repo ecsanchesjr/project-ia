@@ -17,8 +17,7 @@ extern int MUT_PERCENTAGE;
 extern int ELITISM_TOTAL;
 
 const int RES = 10000; // Number to improve the visualization of fitness values.
-static vector<City> firstPoint; // Save the cities to random-first generation
-static vector<Tour> elitismTours; // Save the best Tours to Elitism
+extern vector<City> firstPoint; // Save the cities to random-first generation
 
 /*----------------------
     Utilities Functions
@@ -39,5 +38,8 @@ int findLowerDistance(vector<City>, City);
 double convertRanges(const int, const double);
 
 bool ALargerB(Tour&, Tour&);
+
+// Erase and Return the best Tour, use with a auxiliary Pop
+vector<Tour> elitism(vector<Tour>&);
 
 #endif

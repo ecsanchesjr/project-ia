@@ -11,7 +11,7 @@ TARGET_DIST := $(OUT_PATH)/dist
 
 SOURCES := $(shell find $(SRC_PATH) -type f -name *.cpp)
 
-ARGS := berlin52.tsp berlin52.log 30 1 1 20 5
+ARGS := berlin52.tsp berlin52.log 50 1 1 20 5
 
 all: build run
 

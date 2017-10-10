@@ -14,12 +14,7 @@ Population *Population::newGeneration()
 {
     Population *newGen = new Population;
 
-/*     for (int i = 0; i < ELITISM_TOTAL; i++)
-    { // Get the N best Tours of Population, the population continues with tours to selection method
-        elitismTours.push_back(aux.elitism());
-    } */
-    //delete aux; 
-    elitism();
+    vector<Tour> elitismTours = elitism(pop);
 
     for (int i = 0; i < pop.size() - ELITISM_TOTAL; i++)
     {
@@ -28,13 +23,10 @@ Population *Population::newGeneration()
 
     newGen->crossover();
     newGen->mutate();
-
-    for (Tour t : elitismTours)
-    {
+    for(Tour t : elitismTours){
         (*newGen).getPop().push_back(t);
     }
 
-    elitismTours.clear();
     return (newGen);
 }
 
@@ -98,42 +90,6 @@ Tour Population::roulete()
         }
     }
     return (pop[pop.size() - 1]);
-}
-
-/* Tour Population::elitism()
-{
-    double maxFit{maxFitness(this->pop)};
-    int i = 0;
-    for (Tour t : (this->pop))
-    {   
-        if (compareDouble(t.getFitness(), maxFit))
-        {
-            Tour tmp = t;
-            this->pop.erase(this->pop.begin() + i);
-            return (tmp);
-        }
-        i++;
-    }
-    return(this->pop[0]);
-}  */
-
-/* Tour Population::elitism(){  // Mantem a melhor solução da geração, irá retornar o Tour
-    double maxFit{maxFitness(pop)};
-    for(Tour t : (pop)){
-        if(compareDouble(t.getFitness(),maxFit)){
-            return(t);
-        }
-    }
-} */
-
-void Population::elitism(){
-    Population aux;
-    aux.getPop() = pop;
-
-    std::sort(aux.getPop().begin(), aux.getPop().end(), ALargerB);
-    for(int i=0; i<ELITISM_TOTAL; i++){
-        elitismTours.push_back(aux.getPop()[i]);
-    }
 }
 
 void Population::mutation(const int t)

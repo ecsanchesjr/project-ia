@@ -4,11 +4,11 @@ int ELITISM_TOTAL=0;
 int CROSS_METHOD=0;
 int MUT_PERCENTAGE=0;
 
+vector<City> firstPoint;
 
 bool compareDouble(const double a, const double b){
     return(fabs(a-b)<numeric_limits<double>::epsilon());
 }
-
 
 double maxFitness(vector<Tour>& tours){
     double max = numeric_limits<double>::min(), fitness{0.0};
@@ -61,4 +61,16 @@ double convertRanges(const int n,const double rand){
 
 bool ALargerB(Tour& t1, Tour& t2){
     return (t1.getFitness() > t2.getFitness());
+}
+
+vector<Tour> elitism(vector<Tour>& tours){
+    vector<Tour> elitism;
+
+    std::sort(tours.begin(), tours.end(), ALargerB);
+
+    for(int i=0; i<ELITISM_TOTAL; i++){
+        elitism.push_back(tours[i]);
+    }
+
+    return(elitism);
 }

@@ -46,9 +46,6 @@ private:
   // Will chose a Tour, in pop, randomly for crossover execution
   Tour roulete();
 
-  // Erase and Return the best Tour, use with a auxiliary Pop
-  void elitism();
-
   // Will execute mutation in Tour passed.
   void mutation(const int);
 
