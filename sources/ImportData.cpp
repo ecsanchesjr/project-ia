@@ -4,10 +4,10 @@ ImportData::ImportData(string nome)
 {
     string input;
     int cityId=0;
-    cout << "Importando Arquivo \n";
+    //cout << "Reading File... "<< endl;
     myfile.open(nome);
     if(!myfile.is_open()){
-        cout <<"Falha na leitura do arquivo" <<endl;
+        cout <<"Fail in reading file" <<endl;
         exit(EXIT_FAILURE);
     }
     myfile >> input;

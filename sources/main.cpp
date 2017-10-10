@@ -64,12 +64,12 @@ int main(int argc, char *argv[]){
     }catch(std::invalid_argument &e){
         std::cerr << "Error in param!" << endl;
     }
-    auto t0 = Clock::now(); // Init time metrics
+    //auto t0 = Clock::now(); // Init time metrics
     initAlg();
-    auto tF = Clock::now();    
+    //auto tF = Clock::now();    
 
-    int exeTime = std::chrono::duration_cast<std::chrono::seconds>(tF - t0).count();
-    cout << "Execution time: " << exeTime << " seconds!" <<  endl;
+    //int exeTime = std::chrono::duration_cast<std::chrono::seconds>(tF - t0).count();
+    //cout << "Execution time: " << exeTime << " seconds!" <<  endl;
 
     return(0);
 }
@@ -91,7 +91,7 @@ void initAlg(){
     input.str("");
     input.clear();
     fitnessRunning = maxFitness(pop->getPop());
-    input << gen << ";" << fitnessRunning << ";" << ((1/fitnessRunning)*10000);
+    input << gen << " , " << fitnessRunning << " , " << ((1/fitnessRunning)*10000);
     outputStream.writeFile(input); 
 
      while(!endAlg(*pop)){ // While stop condition not executed
@@ -101,11 +101,11 @@ void initAlg(){
         delete oldPop;
         gen++;
         if(gen%100==0){
-            cout << "Generation: " << gen << endl;
+            //cout << "Generation: " << gen << endl;
             input.str("");
             input.clear();
             fitnessRunning = maxFitness(pop->getPop());
-            input << gen << ";" << fitnessRunning << ";" << ((1/fitnessRunning)*10000);
+            input << gen << " , " << fitnessRunning << " ," << ((1/fitnessRunning)*10000);
             outputStream.writeFile(input); 
         }
     }
@@ -117,7 +117,9 @@ void initAlg(){
         inputSol << c.getId();
         outputSolStream.writeFile(inputSol);
     }
-    cout << "Stop condition executed!!" << endl;    
+    //cout << "Stop condition executed!!" << endl;    
+
+    cout << ((1/maxFitness(pop->getPop()) * 10000)) << endl;
 }
 
 bool endAlg(Population &pop){
@@ -127,8 +129,8 @@ bool endAlg(Population &pop){
     if(maxFitNow > maxFitEver){
         maxFitEver = maxFitNow;
         genWithoutChanges = 0;
-        cout << "Increased Maximum Fitness!" << endl;
-        cout << "Fitness: " << maxFitEver << "\t" << "Distance: " << ((1/maxFitEver)*10000) << endl;
+        //cout << "Increased Maximum Fitness!" << endl;
+        //cout << "Fitness: " << maxFitEver << "\t" << "Distance: " << ((1/maxFitEver)*10000) << endl;
     }else{
         genWithoutChanges++;
     }
