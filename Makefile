@@ -1,4 +1,4 @@
-CC := g++ -std=gnu++14
+CC := g++ -std=gnu++14 -fsanitize=address
 
 SRC_PATH := sources
 INC_PATH := includes

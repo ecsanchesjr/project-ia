@@ -38,3 +38,8 @@
 
 /bin
 bin/
+
+logs/
+/logs
+
+scrips/Graphs
